@@ -33,12 +33,5 @@ You should then be able to [log into the SDE](https://sde002.uksouth.cloudapp.az
 We have further information on how you can provide feedback and get [support](https://github.com/Barts-Life-Science/Support).
 
 ## Using your workspace
-See [Using your workspace](./Using-your-workspace.html)
+See [Using your workspace](https://github.com/Barts-Life-Science/AzureTRE/wiki/Using-your-workspace)
 
-## Timeline
-The approximate timeline for the SDE development is as follows:
-* The Alpha version is already available (June 2024). The Alpha is not yet verified to be secure for sensitive data and is only open to select users. We will use feedback from those users to drive the development plan going forwards. As such, we don't expect the users of the alpha to achieve significant analysis results.
-* A Beta will be released in the near future, as soon as we're satisfied the SDE is usable for sensitive data. At this point, real analysis work should be possible.
-* By autumn 2024, we expect to release an MVP, or Minimum Viable Product. This means the basic functionality is there for most or all types of analysis, and the platform is ready for a broader range of users.
-* In Spring 2025, we expect to release a full production version, with the features and functionality we need to support the full range of analysis activities.
-* Further development and enhancements will continue throughout 2025, at least.
