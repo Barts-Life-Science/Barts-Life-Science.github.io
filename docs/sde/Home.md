@@ -12,7 +12,7 @@ As the name implies, an SDE is an environment in which data can be analysed secu
 
 Data can only be put into or extracted from the SDE by one of two routes:
 * Data from Barts Health requested and approved via the [Data Access Committee (DAC)](https://bartslifesciences.org/precision-medicine/) will be pushed into the project storage after any appropriate pre-processing, such as anonymisation. With the approval of the DAC, we can link data sets from other Data Controllers to our own data either anonymised or psuedoanonymised, depending on the requirements.
-* Other data, software or tools can be imported or exported by going through an 'airlock' process, where the data is staged through secure storage and is reviewed by the PM team before access is granted and the material is available the other side of the airlock.
+* Other data, software or tools can be imported or exported by going through an 'airlock' process, where the data is staged through secure storage and is reviewed by the Precision Medicine team before access is granted and the material is available the other side of the airlock.
 
 In order to keep the data secure, there are some restrictions on the analysis environment. The data can be accessed through **virtual machines** (VMs), contained in a **workspace**. Each workspace is unique to a project, with only project-members having access to it. The VMs in a workspace cannot be accessed directly through [Secure Shell (SSH)](https://www.openssh.com/), they have to be accessed by a web-based virtual desktop.
 
@@ -25,7 +25,7 @@ Once a project has been approved through the DAC, we will provision a workspace 
 * **Workspace Owner**, who can create and destroy resources in the workspace, or 
 * **Workspace Researcher**, who can use resources, but can only create or destroy selected resources, such as VMs.
 
-A Workspace Owner can manage all the resources created by any researcher, but a researcher can only manage resources that they themselves create.
+A Workspace Owner can manage all the resources created by any Workspace Researcher, but a Workspace Researcher can only manage resources that they themselves create.
 
 You should then be able to [log into the SDE](https://sde002.uksouth.cloudapp.azure.com/), select your workspace, and view/manage/use the resources in your project.
 
