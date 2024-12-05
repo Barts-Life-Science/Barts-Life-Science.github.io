@@ -1,21 +1,25 @@
 # Using your workspace
 
-You access your workspace via the web, once you've been assigned an appropriate role. A workspace consists of several **workspace services**, plus also access to **shared services**, which are shared by all the workspaces in the SDE. The **Workspace Owner** can manage all the resources in their own workspaces, but cannot manipulate the shared services. A **Workspace researcher** can also create and use resources, but can only delete or modify resources they have created themselves.
+You access your workspace via the web, once you've been assigned an appropriate role. A workspace consists of several **workspace services**, plus also access to **shared services**, which are shared by all the workspaces in the SDE. The **Workspace Owner** can manage all the resources in their own workspaces, regardless of who created them, but cannot manipulate the shared services. A **Workspace Researcher** can also create and use certain resources, but can only delete or modify resources they have created themselves.
 
 ## Getting access to the SDE
 
-As of July 2024, the alpha release of the SDE is only open to specific users, [contact us](mailto:bartshealth.researchdatasupport@nhs.net) if you think you should be among them. If you have been given access to it, you can log in at https://sde002.uksouth.cloudapp.azure.com/, using your credentials. These will either be:
-* Your usual Barts Health credentials that you would use to log into your laptop or VDI. Generally your desktop login @ bartshealthnhs.uk and password (e.g.,  SmithJ@bartshealthnhs.uk)
-* Dedicated credentials to access Precision Medicine related services (e.g., SmithJ@BHPrecisionMedicine.onmicrosoft.com).
+As of December 2024, the MVP release of the SDE is now available, and will be the default mode of providing data and compute resources to projects approved through the DAC. If you have been given access to it, you can log in at https://sde.bartshealth.nhs.uk/, using your credentials. These credentials will either be:
+* Your usual Barts Health credentials that you would use to log into your laptop or VDI. Generally your desktop login @ bartshealthnhs.uk (e.g.,  SmithJ@bartshealthnhs.uk)
+* Dedicated credentials to access Precision Medicine related services (e.g., SmithJ@BHPrecisionMedicine.onmicrosoft.com). These will be provided if you do not have an NHS account that can be mapped into our Entra ID directory.
+
+
+**TBD** [contact us](mailto:bartshealth.researchdatasupport@nhs.net) if you think you should be among them.
 
 ## Resource hierarchy: SDE, Workspace, User
-Within the SDE, resources for a project are grouped into a Workspace, which has workspace-level resources. These workspace-level resources may also have user-level resources. The terms **project** and **workspace** both refer to the same thing as far as the SDE is concerned. You will **not** have access to any other workspaces and their resources - this is a key feature of the SDE architecture - even if you already have access to that workspace.
+Within the SDE, resources for a project are grouped into a Workspace, which has workspace-level resources. These workspace-level resources may also have user-level resources. The terms **project** and **workspace** both refer to the same thing as far as the SDE is concerned. From within a workspace, you will not have access to any other workspaces or their resources - this is a key feature of the SDE architecture. If you have multiple workspaces available to you, by way of being on multiple projects at the same time, the only way to share data between them will be to export it from one workspace and import it to the other.
 
+**TBD** links
 Some examples of workspace services:
-* **Gitea** is a git repository management system. This should be installed once in each workspace to allow all Users in that workspace to use Git to share and manage your code within that workspace. Changes you make in this Git will need to be exported through the Airlock to be used elsewere.
+* **Gitea** is a git repository management system. This should be installed once in each workspace to allow all Users in that workspace to use Git to share and manage your code within that workspace. Changes you make in these git repositories will need to be exported through the Airlock to be used elsewere.
 * **Apache Guacamole** is a virtual desktop management system. This allows you to create virtual machines (Linux or Windows), and then get a virtual desktop to access them. Guacamole itself is a project-level resource, so you only need one per workspace, but the VMs created in it are specific to the user, so they are a user-level resource, not shared among multiple users.
 * **MySQL** is a standard SQL database service, which, again, probably only needs one deployment per workspace. Each MySQL service can hold multiple databases, each with their own permissions.
-* **Azure Databricks** and **MLflow** are available for machine-learning projects.
+* **Azure Databricks**, **AzureML**, and **MLflow** are available for machine-learning projects.
 
 At the SDE level, the most important shared services are:
 * **Gitea**. This shared service is useful for mirroring external Git repositories into the SDE network space so you can access them from within a workspace. Without this, you have no external access to, for example, GitHub. The access is one way, you cannot use this service to push changes back to GitHub. Access to this service can be provided by raising a [support issue](https://github.com/Barts-Life-Science/Support) and identifying the GitHub repositories that need to be mirrored.
@@ -27,14 +31,18 @@ There are other services available, and new services can be created by building 
 ## Accessing a workspace
 When you log into the SDE, your initial view will look something like this. There will be a separate workspace for each project you have access to, in this example, there's only one project.
 ![Empty workspace](../assets/sde/00-empty-workspace.png)
+**TBD**
 
 Click on the workspace to get the **Workspace Overview** page. There are other tabs there you can explore, to get more information about your workspace. They're not normally useful during operation, but if you file a bug report or an issue, a screenshot from the **Operations** tab is often helpful.
 ![Workspace overview](01-workspace-overview)
+**TBD**
 
-The workspace currently has no services in it. Using the **Create new** button on the right will bring up a menu of resources which you can choose from, then you fill in the form with a few parameters, and submit the form. Your workspace resources will then appear here, as you can see in the next screenshot. Here, we see a **Gitea** service, which is still deploying, and a **Guacamole** service, which is ready for use.
+The workspace currently has no services in it. Workspace Owners can use the **Create new** button on the right to bring up a menu of resources to choose from, then you fill in the form with a few parameters, and submit the form. Your workspace resources will then appear here, as you can see in the next screenshot. Here, we see a **Gitea** service, which is still deploying, and a **Guacamole** service, which is ready for use.
 
+**TBD**
 N.B. We don't show the full process for deploying **Gitea** or **Guacamole**, since we will do that for you as part of the setup of your workspace. In any case, the process is very similar to that for creating a virtual machine, which is explained in detail below.
 ![Workspace with services](03-workspace-with-services)
+**TBD**
 
 ## Creating a Virtual Machine
 Virtual machines are created via the **Guacamole** workspace service. From your workspace overview, click on the Guacamole service tile, which takes you to the screen below. Any existing VMs that you have access to will also be listed here, there are none at the moment.
