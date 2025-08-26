@@ -65,3 +65,27 @@ Guacamole can be a bit flaky, and it sometimes takes a few goes to be able to co
 * Then try opening a new incognito window in your browser and try again.
 * If that all fails, you can always destroy the VM and create a new one, assuming you haven't customised the VM too much.
 * If you don't want to destroy the VM, [file a support ticket](https://github.com/Barts-Life-Science/Support), giving [all the relevant information](#how-do-i-get-help)
+
+# Software on VMs
+## R / RStudio
+### How do I install tidyverse for RStudio?
+We're not yet sure how to install packages such as tidyverse into RStudio directly. In principle, [it should be enough to set the `https_proxy` and `http_proxy` variables in your `~/.Renviron` file](https://support.posit.co/hc/en-us/articles/200488488-Configuring-R-to-Use-an-HTTP-or-HTTPS-Proxy), but that doesn't seem to work properly. (The `http*_proxy_user` variables are not required, the proxy gives anonymous access from within the SDE.)
+
+Fortunately, you can install R packages another way, via conda:
+
+N.B. If this is the first time you've use `conda` in your virtual machine, first run `conda init`, then exit your shell/terminal and start a new one.
+
+```bash
+conda create -n my-env -y
+conda activate my-env
+conda install -y conda-forge::r-tidyverse
+rstudio
+```
+
+From then on, for every new terminal session, you can just:
+```bash
+conda activate my-env
+rstudio
+```
+
+Once rstudio starts, you should be able to `require( tidyverse )` successfully.
