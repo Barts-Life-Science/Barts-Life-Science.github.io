@@ -65,3 +65,31 @@ Guacamole can be a bit flaky, and it sometimes takes a few goes to be able to co
 * Then try opening a new incognito window in your browser and try again.
 * If that all fails, you can always destroy the VM and create a new one, assuming you haven't customised the VM too much.
 * If you don't want to destroy the VM, [file a support ticket](https://github.com/Barts-Life-Science/Support), giving [all the relevant information](#how-do-i-get-help)
+
+# Software on VMs
+## R / RStudio
+### How do I install R packages on Ubuntu?
+There's [a bug in the way `R` and `RStudio` are configured on Ubuntu in the SDE](https://github.com/microsoft/AzureTRE/issues/4657) at the moment, which means they don't succeed in installing packages in the usual manner (e.g. `install.packages( "tidyverse" )` fails in both)
+
+There are two ways to work around this. The first is to open a terminal, run `sudo bash` to become root, then edit `/etc/R/Rprofile`. You'll see an extra double-quote in the middle of the proxy string, just remove that and restart your R session.
+
+That will allow you to install packages, compiling them from source.
+
+If you want to install binary packages instead, for speed or reproducibility, you can do it another way, via conda:
+
+N.B. If this is the first time you've use `conda` in your virtual machine, first run `conda init`, then exit your shell/terminal and start a new one.
+
+```bash
+conda create -n my-env -y
+conda activate my-env
+conda install -y conda-forge::r-tidyverse
+rstudio
+```
+
+From then on, for every new terminal session, you can just:
+```bash
+conda activate my-env
+rstudio
+```
+
+Once rstudio starts, you should be able to `require( tidyverse )` successfully.
