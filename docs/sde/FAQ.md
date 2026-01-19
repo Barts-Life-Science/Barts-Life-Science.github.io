@@ -82,7 +82,8 @@ N.B. If this is the first time you've use `conda` in your virtual machine, first
 ```bash
 conda create -n my-env -y
 conda activate my-env
-conda install -y conda-forge::r-tidyverse
+conda install -y -c conda-forge r-dbi r-odbc r-dbplyr r-tidyverse
+export RSTUDIO_WHICH_R=$(which R)
 rstudio
 ```
 
