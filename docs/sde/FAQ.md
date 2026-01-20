@@ -37,6 +37,8 @@ Windows VMs cost more than Linux VMs because of the Windows license. We try to m
 
 A VM only incurs cost while it's running. If you **Stop** the VM, it will not cost you anything until you **Start** it again. So if you only use a VM during office hours, you can expect it to cost 1/3 of the price shown below.
 
+**N.B.** The **Stop** and **Start** actions are under the **Actions** menu for each VM. The **Disable** and **Enable** buttons *do not* power down the VM, so *do not save you money*. When you Stop your VM it will show as **deallocated** in the SDE workspace.
+
 Type name | #CPUs | RAM (GB) | #GPUs | Linux (£/month) | Windows (£/month)
 | :--- | ---: | ---: | :---: | ---: | ---: |
 Standard_D2s_v5 | 2 | 8 | - | 65 | 120
@@ -90,6 +92,7 @@ rstudio
 From then on, for every new terminal session, you can just:
 ```bash
 conda activate my-env
+export RSTUDIO_WHICH_R=$(which R)
 rstudio
 ```
 
